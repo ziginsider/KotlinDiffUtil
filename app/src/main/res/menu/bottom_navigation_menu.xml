@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+>
+
+    <item
+        android:id="@+id/sortName"
+        android:enabled="true"
+        android:icon="@drawable/ic_sort_name"
+        android:title="sort by name"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/sortAge"
+        android:enabled="true"
+        android:icon="@drawable/ic_sort_age"
+        android:title="sort by age"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/delEven"
+        android:enabled="true"
+        android:icon="@drawable/ic_del_even"
+        android:title="delete even"
+        app:showAsAction="ifRoom" />
+
+</menu>

@@ -21,35 +21,25 @@ class MainActivity : AppCompatActivity(), UserClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val users = MockDataProvider().data
+        var users : List<User> = MockDataProvider().data
 
         updateAdapter(users)
-
-
 
         bottomNavigation.setOnNavigationItemSelectedListener {
             item: MenuItem ->
             when (item.itemId) {
                 R.id.sortName -> {
-                    //users.sortBy { it.name }
-                    val newList = users.sortedWith(compareBy({it.name}, {it.age}))
-                    val result = recyclerAdapter?.getDiffUtilResult(newList)
-                    recyclerAdapter?.setItems(newList)
-                    result?.dispatchUpdatesTo(recyclerAdapter)
+                    users = users.sortedWith(compareBy({it.name}, {it.age}))
+                    updateAdapter(users)
                 }
                 R.id.sortAge -> {
-                    //users.sortBy { it.age }
-                    //updateAdapter(users)
-                    //setUpRecyclerView(users)
-                    val newList = users.sortedWith(compareBy({it.age}, {it.name}))
-                    val result = recyclerAdapter?.getDiffUtilResult(newList)
-                    recyclerAdapter?.setItems(newList)
-                    result?.dispatchUpdatesTo(recyclerAdapter)
+                    users = users.sortedWith(compareBy({it.age}, {it.name}))
+                    updateAdapter(users)
 
                 }
                 R.id.delEven -> {
-                    val newList = users.drop(3)
-                    updateAdapter(newList)
+                    users = users.drop(1)
+                    updateAdapter(users)
                 }
             }
             true

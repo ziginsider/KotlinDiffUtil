@@ -25,12 +25,6 @@ class UserAdapter(users: List<User>,
         result.dispatchUpdatesTo(this)
     }
 
-    fun getDiffUtilResult(newItems: List<User>) = DiffUtil.calculateDiff(DiffUtilCallback(itemList, newItems))
-
-    fun setItems(newItems: List<User>) {
-        itemList = newItems
-    }
-
     override fun View.bind(item: User) {
         userName.text = item.name
         userAge.text = item.age.toString()

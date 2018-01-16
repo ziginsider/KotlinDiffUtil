@@ -3,6 +3,7 @@ package io.github.ziginsider.kotlindiffutil.adapter
 import android.support.v7.util.DiffUtil
 import android.view.View
 import io.github.ziginsider.kotlindiffutil.R
+import io.github.ziginsider.kotlindiffutil.adapter.listener.UserClickListener
 import io.github.ziginsider.kotlindiffutil.model.User
 import kotlinx.android.synthetic.main.item_view.view.*
 
@@ -11,11 +12,11 @@ import kotlinx.android.synthetic.main.item_view.view.*
  */
 
 class UserAdapter(users: List<User>,
-                  private val itemClick: User.() -> Unit = {})
+                  private val userClickListener: UserClickListener)
     : AbstractAdapter<User>(users, R.layout.item_view) {
 
     override fun onItemClick(itemView: View, position: Int) {
-        itemList[position].itemClick()
+        userClickListener.onUserClicked(itemList[position])
     }
 
     fun update(newItems: List<User>) {
@@ -24,12 +25,11 @@ class UserAdapter(users: List<User>,
         result.dispatchUpdatesTo(this)
     }
 
-//    private fun updateAdapterWithDiffResult(result: DiffUtil.DiffResult) {
-//        result.dispatchUpdatesTo(this)
-//    }
-//
-//    private fun calculateDiff(newItems: List<User>) =
-//            DiffUtil.calculateDiff(DiffUtilCallback(itemList, newItems))
+    fun getDiffUtilResult(newItems: List<User>) = DiffUtil.calculateDiff(DiffUtilCallback(itemList, newItems))
+
+    fun setItems(newItems: List<User>) {
+        itemList = newItems
+    }
 
     override fun View.bind(item: User) {
         userName.text = item.name
@@ -49,5 +49,4 @@ class UserAdapter(users: List<User>,
             in 93..100 -> userImage.setImageResource(R.drawable.user5)
         }
     }
-
 }

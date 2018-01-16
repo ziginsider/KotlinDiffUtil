@@ -6,7 +6,7 @@ import io.github.ziginsider.kotlindiffutil.model.User
 /**
  * Created by zigin on 16.01.2018.
  */
-internal class DiffUtilCallback(private val oldItems: List<User>,
+class DiffUtilCallback(private val oldItems: List<User>,
                                 private val newItems: List<User>): DiffUtil.Callback() {
 
     override fun getOldListSize() = oldItems.size

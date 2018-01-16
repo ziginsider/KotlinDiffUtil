@@ -19,19 +19,35 @@ class UserAdapter(users: List<User>,
     }
 
     fun update(newItems: List<User>) {
-        updateAdapterWithDiffResult(calculateDiff(newItems))
-    }
-
-    private fun updateAdapterWithDiffResult(result: DiffUtil.DiffResult) {
+        val result = DiffUtil.calculateDiff(DiffUtilCallback(itemList, newItems))
+        itemList = newItems
         result.dispatchUpdatesTo(this)
     }
 
-    private fun calculateDiff(newItems: List<User>) =
-            DiffUtil.calculateDiff(DiffUtilCallback(itemList, newItems))
+//    private fun updateAdapterWithDiffResult(result: DiffUtil.DiffResult) {
+//        result.dispatchUpdatesTo(this)
+//    }
+//
+//    private fun calculateDiff(newItems: List<User>) =
+//            DiffUtil.calculateDiff(DiffUtilCallback(itemList, newItems))
 
     override fun View.bind(item: User) {
         userName.text = item.name
         userAge.text = item.age.toString()
+        when(item.age) {
+            in 0..7 -> userImage.setImageResource(R.drawable.user12)
+            in 8..15 -> userImage.setImageResource(R.drawable.user9)
+            in 16..23 -> userImage.setImageResource(R.drawable.user11)
+            in 24..30 -> userImage.setImageResource(R.drawable.user3)
+            in 31..39 -> userImage.setImageResource(R.drawable.user7)
+            in 40..50 -> userImage.setImageResource(R.drawable.user8)
+            in 51..58 -> userImage.setImageResource(R.drawable.user4)
+            in 59..67 -> userImage.setImageResource(R.drawable.user1)
+            in 68..76 -> userImage.setImageResource(R.drawable.user6)
+            in 77..85 -> userImage.setImageResource(R.drawable.user2)
+            in 85..92 -> userImage.setImageResource(R.drawable.user10)
+            in 93..100 -> userImage.setImageResource(R.drawable.user5)
+        }
     }
 
 }

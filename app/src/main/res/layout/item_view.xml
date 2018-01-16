@@ -19,7 +19,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/shotImage"
+            android:id="@+id/userImage"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="centerCrop" />
@@ -37,7 +37,7 @@
             android:textColor="@android:color/black"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/shotImage"
+            app:layout_constraintStart_toEndOf="@+id/userImage"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView

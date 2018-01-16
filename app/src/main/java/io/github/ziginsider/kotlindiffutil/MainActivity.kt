@@ -31,20 +31,26 @@ class MainActivity : AppCompatActivity(), UserClickListener {
             item: MenuItem ->
             when (item.itemId) {
                 R.id.sortName -> {
-                    users.sortBy { it.name }
-                    updateAdapter(users)
-                    toast("fff")
+                    //users.sortBy { it.name }
+                    val newList = users.sortedWith(compareBy({it.name}, {it.age}))
+                    val result = recyclerAdapter?.getDiffUtilResult(newList)
+                    recyclerAdapter?.setItems(newList)
+                    result?.dispatchUpdatesTo(recyclerAdapter)
                 }
                 R.id.sortAge -> {
-                    users.sortBy { it.age }
+                    //users.sortBy { it.age }
                     //updateAdapter(users)
                     //setUpRecyclerView(users)
-                    val result = recyclerAdapter?.getDiffUtilResult(users)
-                    recyclerAdapter?.setItems(users)
+                    val newList = users.sortedWith(compareBy({it.age}, {it.name}))
+                    val result = recyclerAdapter?.getDiffUtilResult(newList)
+                    recyclerAdapter?.setItems(newList)
                     result?.dispatchUpdatesTo(recyclerAdapter)
 
                 }
-                R.id.delEven -> {}
+                R.id.delEven -> {
+                    val newList = users.drop(3)
+                    updateAdapter(newList)
+                }
             }
             true
         }
@@ -60,7 +66,7 @@ class MainActivity : AppCompatActivity(), UserClickListener {
             layoutManager = LinearLayoutManager(this.context)
             setHasFixedSize(true)
             adapter = recyclerAdapter
-            //scheduleLayoutAnimation()
+            scheduleLayoutAnimation()
         }
     }
 

@@ -19,9 +19,9 @@ class UserAdapter(users: List<User>,
         userClickListener.onUserClicked(itemList[position])
     }
 
-    fun update(newItems: List<User>) {
-        val result = DiffUtil.calculateDiff(DiffUtilCallback(itemList, newItems))
-        itemList = newItems
+    fun update(newItemList: List<User>) {
+        val result = DiffUtil.calculateDiff(DiffUtilCallback(itemList, newItemList))
+        itemList = newItemList
         result.dispatchUpdatesTo(this)
     }
 

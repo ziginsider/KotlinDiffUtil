@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), UserClickListener {
 
                 }
                 R.id.delEven -> {
-                    users = users.drop(1)
+                    users = users.drop(3)
                     updateAdapter(users)
                 }
             }

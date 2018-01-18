@@ -17,10 +17,10 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/delEven"
+        android:id="@+id/randomUsers"
         android:enabled="true"
-        android:icon="@drawable/ic_del_even"
-        android:title="delete even"
+        android:icon="@drawable/ic_mix_users"
+        android:title="mix users"
         app:showAsAction="ifRoom" />
 
 </menu>

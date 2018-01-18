@@ -2,10 +2,8 @@ package io.github.ziginsider.kotlindiffutil
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.util.DiffUtil
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
-import io.github.ziginsider.kotlindiffutil.adapter.DiffUtilCallback
 import io.github.ziginsider.kotlindiffutil.adapter.UserAdapter
 import io.github.ziginsider.kotlindiffutil.mock.MockDataProvider
 import io.github.ziginsider.kotlindiffutil.model.User
@@ -37,8 +35,8 @@ class MainActivity : AppCompatActivity(), UserClickListener {
                     updateAdapter(users)
 
                 }
-                R.id.delEven -> {
-                    users = users.drop(3)
+                R.id.randomUsers -> {
+                    users = users.shuffled()
                     updateAdapter(users)
                 }
             }
@@ -61,7 +59,7 @@ class MainActivity : AppCompatActivity(), UserClickListener {
     }
 
     override fun onUserClicked(user: User) {
-        toast("I'm user ${user.name}")
+        toast("I'm user ${user.name}. I'm ${user.age} years old.")
     }
 }
 
